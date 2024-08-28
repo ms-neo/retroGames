@@ -7,8 +7,8 @@ export default defineConfig({
   // server: {
     proxy: {
       '/': {
-        port:5173,
-        target: 'http://localhost:3000',
+        // port:5173,
+        // target: 'http://localhost:3000',
     //     changeOrigin: true,
     //     secure: false,
     //     ws: true,
