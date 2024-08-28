@@ -1,12 +1,13 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
+axios.defaults.baseURL = `http://localhost:3000`
 
 const admin = JSON.parse(localStorage.getItem('admin'))
 
 export const addAdmin = createAsyncThunk('admin/register',async(signupData,thunkAPI)=>{
     console.log(signupData,'signupdata')
     try {
-        const {data } = await axios.post('http://localhost:3000/admin/register',signupData)
+        const {data } = await axios.post('/admin/register',signupData)
         localStorage.setItem('admin',JSON.stringify(data))
         // console.log(data,'data')
         return data
@@ -22,7 +23,7 @@ export const addAdmin = createAsyncThunk('admin/register',async(signupData,thunk
 export const signin = createAsyncThunk('admin/signIn',async (signinData,thunkAPI)=>{
     console.log(signinData,'signindata')
     try {
-        const {data} = await axios.post('http://localhost:3000/admin/login',signinData)
+        const {data} = await axios.post('/admin/login',signinData)
         localStorage.setItem('admin',JSON.stringify(data))
         // console.log(data )
         return data
@@ -37,7 +38,7 @@ export const signin = createAsyncThunk('admin/signIn',async (signinData,thunkAPI
 
 export const getAdmin = createAsyncThunk('admin/getAdmin',async (adminId,thunkAPI)=>{
     try {
-        const {data} = await axios.get(`http://localhost:3000/admin/${adminId}`)
+        const {data} = await axios.get(`/admin/${adminId}`)
         localStorage.setItem('admin',JSON.stringify(data))
         // console.log(data)
         return data

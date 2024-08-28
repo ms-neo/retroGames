@@ -5,10 +5,10 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   // server: {
-    // proxy: {
-    //   '/api': {
-    //     port:5174,
-    //     target: 'http://localhost:3000',
+    proxy: {
+      '/': {
+        port:5173,
+        target: 'http://localhost:3000',
     //     changeOrigin: true,
     //     secure: false,
     //     ws: true,
@@ -25,10 +25,10 @@ export default defineConfig({
     //     }
 
     //   },
-    // },
+    },
 
     
-  // },
+  },
   build: {
     //  to NOT wanting increase the chunkSizeWarningLimit and focus more on solving the actual size issue
     rollupOptions: {

@@ -3,6 +3,7 @@ import {
     createSlice 
 } from '@reduxjs/toolkit'
 import axios from 'axios'
+axios.defaults.baseURL = `http://localhost:3000`
 
 const admin =
 //  () =>{
@@ -37,7 +38,7 @@ return thunkAPI.rejectWithValue(errMsg);
 export const getGames = createAsyncThunk('games/getGames' ,async (thunkAPI) =>{
  
     try {
-        const {data}  = await axios.get('http://localhost:3000/games')
+        const {data}  = await axios.get('/games')
         console.log(data,'dats')
         return data
     } catch (err) {
