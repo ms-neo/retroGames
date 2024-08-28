@@ -9,9 +9,9 @@ export default defineConfig({
       '/': {
         port:5173,
         target: 'https://retrogames-e0ob.onrender.com',
-    //     changeOrigin: true,
-    //     secure: false,
-    //     ws: true,
+        changeOrigin: true,
+        secure: false,
+        ws: true,
     //     configure: (proxy, _options) => {
     //       proxy.on('error', (err, _req, _res) => {
     //         console.log('proxy error', err);
