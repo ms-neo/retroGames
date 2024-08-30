@@ -4,13 +4,15 @@ import react from '@vitejs/plugin-react-swc'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // server: {
+  server: {
     proxy: {
-      '/': {
-        port:5173,
-        target: 'https://retrogames-e0ob.onrender.com',
-        // changeOrigin: true,
-        // secure: false,
+        '/api':{
+          target:'http://localhost:3000',
+          changeOrigin: true,
+          secure: false,
+          // rewrite: (path) => path.replace(/^\/api/, ''),
+        } 
+      
         // ws: true,
     //     configure: (proxy, _options) => {
     //       proxy.on('error', (err, _req, _res) => {

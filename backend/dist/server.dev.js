@@ -15,9 +15,9 @@ var connectDB = require('./config/db.js');
 
 connectDB();
 
-var cors = require('cors');
+var cors = require('cors'); // __dirname = path.resolve()
 
-__dirname = path.resolve();
+
 app.use(cors({
   credentials: true,
   origin: true
@@ -33,18 +33,25 @@ var storage = multer.diskStorage({
   }
 });
 module.exports = storage;
-app.use('/uploads', express["static"](path.join(__dirname, 'uploads'))); // React QR Barcode Scanner
+app.use('/uploads', express["static"]('uploads')); // app.use('/uploads', express.static(__dirname + '/uploads'));
+// React QR Barcode Scanner
 // routes
 
-app.use('/games', require('./routes/gameRouts.js'));
-app.use('/admin', require('./routes/adminRouts.js')); // if (process.env.NODE_ENV === 'production'){
-// set static folder
+app.use('/api/games', require('./routes/gameRouts.js'));
+app.use('/api/admin', require('./routes/adminRouts.js'));
+console.log(process.env.NODE_ENV, 'nn');
 
-app.use(express["static"](path.resolve("frontend/dist")));
-app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')); // res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
-  //   res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
-}); // } 
+if (process.env.NODE_ENV === 'production') {
+  var _dirname = path.resolve(); // set static folder
+
+
+  app.use(express["static"](path.join("frontend/dist")));
+  app.get('*', function (req, res) {
+    res.sendFile(path.resolve(_dirname, 'frontend', 'dist', 'index.html')); // res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
+    //   res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
+  });
+} else {// app.get('/',(req,res)=> res.send('server is ready'))
+}
 
 app.listen(port, function () {
   {

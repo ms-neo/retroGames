@@ -3,6 +3,7 @@ import { CardContainer, CardsContainer, Content, ImageWrapper } from "./cardStyl
 import { useNavigate } from "react-router-dom"
 import { getGame, getGames, reset, searchedGames } from "../../redux/features/gamesSlice"
 import { useEffect } from "react"
+import Image from "../../components/image/Image"
 
 
 const Cards = ({games,cards,setCards}) => {
@@ -14,7 +15,7 @@ const Cards = ({games,cards,setCards}) => {
   console.log(newArr,'neee')
   console.log(cards,'cards')
 
-
+console.log(games,'imag')
   // let searched = []
 
 
@@ -46,11 +47,11 @@ const Cards = ({games,cards,setCards}) => {
              games.map(game=>(
               <>
                 <div key={game._id}>
-        <CardsContainer onClick={()=>handleClick(game._id)}>
+        <CardsContainer onClick={()=>handleClick(game._id)} key={game._id}>
               
             <Content>
       <ImageWrapper>
-              <img src={`http://localhost:3000/${game.image}`}/>
+              <Image src={game.image}/>
               </ImageWrapper>
               <div className="vr"></div>
             <div>
@@ -69,11 +70,11 @@ const Cards = ({games,cards,setCards}) => {
                   :      newArr.map(game=>(
                     <>
                       <div key={game._id}>
-              <CardsContainer onClick={()=>handleClick(game._id)}>
+              <CardsContainer onClick={()=>handleClick(game._id)} >
                     
-                  <Content>
+                  <Content key={game._id}>
             <ImageWrapper>
-                    <img src={`http://localhost:3000/${game.image}`}/>
+                    <img src={game.image}/>
                     </ImageWrapper>
                     <div className="vr"></div>
                   <div>

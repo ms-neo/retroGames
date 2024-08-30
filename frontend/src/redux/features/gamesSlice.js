@@ -3,7 +3,7 @@ import {
     createSlice 
 } from '@reduxjs/toolkit'
 import axios from 'axios'
-axios.defaults.baseURL = `http://localhost:3000`
+
 
 const admin =
 //  () =>{
@@ -17,7 +17,7 @@ const admin =
 export const addGame = createAsyncThunk('/add-game',async(game,thunkAPI)=>{
     // console.log(admin.token,'admin')
 try {
-    const {data } = await axios.post('/games',game, 
+    const {data } = await axios.post('api/games',game, 
     {   headers: {
         "Content-Type":'multipart/form-data',
         Authorization  :`${admin.token}`
@@ -38,7 +38,7 @@ return thunkAPI.rejectWithValue(errMsg);
 export const getGames = createAsyncThunk('games/getGames' ,async (thunkAPI) =>{
  
     try {
-        const {data}  = await axios.get('/games')
+        const {data}  = await axios.get('api/games')
         console.log(data,'dats')
         return data
     } catch (err) {
@@ -52,7 +52,7 @@ export const getGames = createAsyncThunk('games/getGames' ,async (thunkAPI) =>{
 
 export const getGame = createAsyncThunk('games/getGame' ,async (gameId,thunkAPI) =>{
     try {
-        const {data}  = await axios.get(`/games/${gameId}`)
+        const {data}  = await axios.get(`api/games/${gameId}`)
         console.log(data,'dats')
         return data
     } catch (err) {
