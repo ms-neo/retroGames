@@ -54,5 +54,6 @@ console.log(process.env.NODE_ENV,'nn')
     // }
 
 app.listen(port,()=>{{
+
     console.log(`the server is working now in port ${port}`)
 }})
