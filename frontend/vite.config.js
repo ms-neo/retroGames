@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
         '/api':{
-          target:'http://localhost:3000',
+          target: 'https://retrogames-e0ob.onrender.com/' ? 'https://retrogames-e0ob.onrender.com/' : 'http://localhost:3000' ,
           changeOrigin: true,
           secure: false,
           // rewrite: (path) => path.replace(/^\/api/, ''),
@@ -31,19 +31,19 @@ export default defineConfig({
 
     
   },
-  build: {
-    //  to NOT wanting increase the chunkSizeWarningLimit and focus more on solving the actual size issue
-    rollupOptions: {
-      input: {
-        app: './index.html', // default
-      },
-        output:{
-            manualChunks(id) {
-                if (id.includes('node_modules')) {
-                    return id.toString().split('node_modules/')[1].split('/')[0].toString();
-                }
-            }
-        }
-    }
-}
+  // build: {
+  //   //  to NOT wanting increase the chunkSizeWarningLimit and focus more on solving the actual size issue
+  //   rollupOptions: {
+  //     input: {
+  //       app: './index.html', // default
+  //     },
+  //       output:{
+  //           manualChunks(id) {
+  //               if (id.includes('node_modules')) {
+  //                   return id.toString().split('node_modules/')[1].split('/')[0].toString();
+  //               }
+  //           }
+  //       }
+    // }
+// }
 })

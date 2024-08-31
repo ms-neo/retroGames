@@ -208,7 +208,7 @@ router.get('/:id', function _callee4(req, res) {
   }, null, null, [[2, 11]]);
 }); // Eidt Game 
 
-router.put('/:id', function _callee5(req, res) {
+router.put('/:id', isAuth, function _callee5(req, res) {
   var _req$body2, name, platform, image, price, dateOfPurchase, numberOfCopies, remarks, gameCode, game;
 
   return regeneratorRuntime.async(function _callee5$(_context5) {

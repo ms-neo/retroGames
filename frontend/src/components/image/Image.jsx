@@ -8,6 +8,7 @@ const Image = ({src,...rest}) => {
     src = src && window.location.href === 'https://retrogames-e0ob.onrender.com/'
     ? `https://retrogames-e0ob.onrender.com/${src}`
     : `http://localhost:3000/${src}`
+ 
   return (
     <img {...rest} src={src} alt={'games'}/>
   )

@@ -119,7 +119,7 @@ router.get('/:id', async (req,res)=>{
 })
 
 // Eidt Game 
-router.put('/:id', async (req,res)=>{
+router.put('/:id',isAuth, async (req,res)=>{
 
     try {
            //get data from frontend
