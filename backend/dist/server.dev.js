@@ -5,7 +5,8 @@ require('dotenv').config();
 var express = require('express');
 
 var app = express();
-var port = 3000 || process.env.PORT;
+var port = process.env.PORT || 3000;
+console.log(process.env.PORT, 'port');
 
 var path = require('path');
 
@@ -45,7 +46,7 @@ console.log(process.env.NODE_ENV, 'nn'); // if (process.env.NODE_ENV === 'produc
 
 app.use(express["static"](path.join("frontend/dist")));
 app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html')); // res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html')); // res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
   //   res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
 }); // } else{
 // app.get('/',(req,res)=> res.send('server is ready'))

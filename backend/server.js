@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express')
 const app = express()
-const port = 3000 || process.env.PORT
+const port = process.env.PORT || 3000
+console.log(process.env.PORT,'port')
 const path =require('path')
 const multer = require('multer')
 const connectDB = require('./config/db.js')
@@ -45,7 +46,7 @@ console.log(process.env.NODE_ENV,'nn')
     app.use(express.static(path.join("frontend/dist")));
     
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'frontend','dist','index.html'));
+        res.sendFile(path.join(__dirname, 'frontend','dist','index.html'));
         // res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
             //   res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
     });
@@ -54,6 +55,6 @@ console.log(process.env.NODE_ENV,'nn')
     // }
 
 app.listen(port,()=>{{
-
+   
     console.log(`the server is working now in port ${port}`)
 }})
