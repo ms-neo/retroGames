@@ -5,7 +5,7 @@ const Image = ({src,...rest}) => {
   // const location = useLocation
   console.log(window.location.href,'src')
     //this code to display the game in dev env or prodc env
-    src = src && window.location.href === 'https://retrogames-e0ob.onrender.com'
+    src = src && window.location.href === 'https://retrogames-e0ob.onrender.com/'
     ? `https://retrogames-e0ob.onrender.com/${src}`
     : `http://localhost:3000/${src}`
   return (
