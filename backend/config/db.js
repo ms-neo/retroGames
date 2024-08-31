@@ -6,9 +6,9 @@ const connectDB = async () =>{
         console.log('conn',process.env.DB_URI)
        await mongoose.connect(`mongodb+srv://${process.env.DB_URI}@db.a1thqsb.mongodb.net/retro-games?retryWrites=true&w=majority&appName=db
        production`,{
-        useUnifiedTopology: true,
+        // useUnifiedTopology: true,
 
-        useNewUrlParser: true,
+        // useNewUrlParser: true,
        })
        console.log('connected to mongodb')
     } catch (err) {
