@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
         '/api':{
-          target:'https://retrogames-e0ob.onrender.com/',
+          target:'http://localhost:3000',
           changeOrigin: true,
           secure: false,
           // rewrite: (path) => path.replace(/^\/api/, ''),

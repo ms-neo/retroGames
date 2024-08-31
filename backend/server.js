@@ -7,7 +7,7 @@ const multer = require('multer')
 const connectDB = require('./config/db.js')
 connectDB()
 const cors =require('cors')
-
+__dirname = path.resolve()
 // __dirname = path.resolve()
 
 app.use(cors({
@@ -40,7 +40,7 @@ console.log(process.env.NODE_ENV,'nn')
 
   // if (process.env.NODE_ENV === 'production'){
 
-  const __dirname = path.resolve()
+
     // set static folder
     app.use(express.static(path.join("frontend/dist")));
     
