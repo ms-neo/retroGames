@@ -38,7 +38,7 @@ app.use('/api/admin',require('./routes/adminRouts.js'))
 
 console.log(process.env.NODE_ENV,'nn')
 
-  if (process.env.NODE_ENV === 'production'){
+  // if (process.env.NODE_ENV === 'production'){
 
   const __dirname = path.resolve()
     // set static folder
@@ -49,9 +49,9 @@ console.log(process.env.NODE_ENV,'nn')
         // res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
             //   res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
     });
-    } else{
+    // } else{
       // app.get('/',(req,res)=> res.send('server is ready'))
-    }
+    // }
 
 app.listen(port,()=>{{
     console.log(`the server is working now in port ${port}`)

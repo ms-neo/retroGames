@@ -39,19 +39,18 @@ app.use('/uploads', express["static"]('uploads')); // app.use('/uploads', expres
 
 app.use('/api/games', require('./routes/gameRouts.js'));
 app.use('/api/admin', require('./routes/adminRouts.js'));
-console.log(process.env.NODE_ENV, 'nn');
+console.log(process.env.NODE_ENV, 'nn'); // if (process.env.NODE_ENV === 'production'){
 
-if (process.env.NODE_ENV === 'production') {
-  var _dirname = path.resolve(); // set static folder
+var _dirname = path.resolve(); // set static folder
 
 
-  app.use(express["static"](path.join("frontend/dist")));
-  app.get('*', function (req, res) {
-    res.sendFile(path.resolve(_dirname, 'frontend', 'dist', 'index.html')); // res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
-    //   res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
-  });
-} else {// app.get('/',(req,res)=> res.send('server is ready'))
-}
+app.use(express["static"](path.join("frontend/dist")));
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve(_dirname, 'frontend', 'dist', 'index.html')); // res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
+  //   res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
+}); // } else{
+// app.get('/',(req,res)=> res.send('server is ready'))
+// }
 
 app.listen(port, function () {
   {
