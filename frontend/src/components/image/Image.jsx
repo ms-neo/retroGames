@@ -1,9 +1,11 @@
 import React from 'react'
 
 const Image = ({src,...rest}) => {
-  console.log(src,'src')
+
+  // const location = useLocation
+  console.log(window.location,'src')
     //this code to display the game in dev env or prodc env
-    src = src && src.includes('https://')
+    src = src && window.location === 'https://retrogames-e0ob.onrender.com'
     ? `https://retrogames-e0ob.onrender.com/${src}`
     : `http://localhost:3000/${src}`
   return (
